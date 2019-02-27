@@ -1,0 +1,15 @@
+target
+.settings
+.classpath
+.project
+
+# idea ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+gat-logs
+logs
+*.log*
+*DS_Store
