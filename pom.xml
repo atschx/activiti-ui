@@ -5,7 +5,7 @@
     <name>Activiti UI App Root</name>
     <groupId>org.activiti</groupId>
     <artifactId>activiti-ui</artifactId>
-    <version>6.0.0</version>
+    <version>6.0.1</version>
     <packaging>pom</packaging>
 
     <properties>
