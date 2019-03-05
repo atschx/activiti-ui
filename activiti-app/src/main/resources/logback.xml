@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+
+    <!--https://guide.wuxingdev.cn/java/app-log.html-->
+    <property name="LOG_FILE" value="logs/application.log"/>
+    <!--<property name="FILE_LOG_PATTERN"-->
+              <!--value="^V^ [%p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] [%c:%L] [%X{traceId}:%X{spanId}:%X{parentId}] [%X{req.xRequestId}] %m%n"/>-->
+    <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+        <!--<encoder>-->
+            <!--<pattern>${FILE_LOG_PATTERN}</pattern>-->
+        <!--</encoder>-->
+        <!--<file>${LOG_FILE}</file>-->
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+            <!--<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+            <!--<maxFileSize>${LOG_FILE_MAX_SIZE:-512MB}</maxFileSize>-->
+            <!--<maxHistory>${LOG_FILE_MAX_HISTORY:-7}</maxHistory>-->
+        <!--</rollingPolicy>-->
+    <!--</appender>-->
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.ciicgat" level="${CIICGAT_ROOT_LEVEL:-INFO}" additivity="true"/>
+
+    <logger name="com.gat" level="${CIICGAT_ROOT_LEVEL:-INFO}" additivity="true"/>
+
+    <!--<logger name="org.hibernate" level="DEBUG" additivity="true"/>-->
+
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <!--<appender-ref ref="FILE"/>-->
+    </root>
+
+
+</configuration>
