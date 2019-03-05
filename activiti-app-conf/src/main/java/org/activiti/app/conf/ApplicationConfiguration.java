@@ -21,7 +21,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @PropertySources({
-
         @PropertySource("classpath:/META-INF/activiti-app/activiti-app.properties"),
         @PropertySource(value = "classpath:activiti-app.properties", ignoreResourceNotFound = true),
         @PropertySource(value = "file:activiti-app.properties", ignoreResourceNotFound = true),

@@ -135,7 +135,7 @@ public class SecurityConfiguration {
                     .and()
                     .rememberMe()
                     .rememberMeServices(rememberMeServices())
-                    .key(env.getProperty("security.rememberme.key"))
+                    .key(env.getProperty("act.security.rememberme.key"))
                     .and()
                     .logout()
                     .logoutUrl("/app/logout")
@@ -179,7 +179,7 @@ public class SecurityConfiguration {
 
         @Bean
         public RememberMeAuthenticationProvider rememberMeAuthenticationProvider() {
-            return new RememberMeAuthenticationProvider(env.getProperty("security.rememberme.key"));
+            return new RememberMeAuthenticationProvider(env.getProperty("act.security.rememberme.key"));
         }
     }
 

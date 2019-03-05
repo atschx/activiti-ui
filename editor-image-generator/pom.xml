@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <name>Activiti editor - Image generator</name>
     <parent>
-        <groupId>org.activiti</groupId>
+        <groupId>org.activiti.ui</groupId>
         <artifactId>activiti-ui</artifactId>
         <version>6.0.1</version>
     </parent>

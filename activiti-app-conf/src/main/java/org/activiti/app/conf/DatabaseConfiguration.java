@@ -151,25 +151,25 @@ public class DatabaseConfiguration {
         }
     }
 
-    @Bean(name = "entityManagerFactory")
-    public EntityManagerFactory entityManagerFactory() {
-        log.info("Configuring EntityManager");
-        LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
-        lcemfb.setPersistenceProvider(new HibernatePersistence());
-        lcemfb.setPersistenceUnitName("persistenceUnit");
-        lcemfb.setDataSource(dataSource());
-        lcemfb.setJpaDialect(new HibernateJpaDialect());
-        lcemfb.setJpaVendorAdapter(jpaVendorAdapter());
-
-        Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.cache.use_second_level_cache", false);
-        jpaProperties.put("hibernate.generate_statistics", env.getProperty("hibernate.generate_statistics", Boolean.class, false));
-        lcemfb.setJpaProperties(jpaProperties);
-
-        lcemfb.setPackagesToScan("org.activiti.app.domain");
-        lcemfb.afterPropertiesSet();
-        return lcemfb.getObject();
-    }
+//    @Bean(name = "entityManagerFactory")
+//    public EntityManagerFactory entityManagerFactory() {
+//        log.info("Configuring EntityManager");
+//        LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
+//        lcemfb.setPersistenceProvider(new HibernatePersistence());
+//        lcemfb.setPersistenceUnitName("persistenceUnit");
+//        lcemfb.setDataSource(dataSource());
+//        lcemfb.setJpaDialect(new HibernateJpaDialect());
+//        lcemfb.setJpaVendorAdapter(jpaVendorAdapter());
+//
+//        Properties jpaProperties = new Properties();
+//        jpaProperties.put("hibernate.cache.use_second_level_cache", false);
+//        jpaProperties.put("hibernate.generate_statistics", env.getProperty("hibernate.generate_statistics", Boolean.class, false));
+//        lcemfb.setJpaProperties(jpaProperties);
+//
+//        lcemfb.setPackagesToScan("org.activiti.app.domain");
+//        lcemfb.afterPropertiesSet();
+//        return lcemfb.getObject();
+//    }
 
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
@@ -184,12 +184,12 @@ public class DatabaseConfiguration {
         return new HibernateExceptionTranslator();
     }
 
-    @Bean(name = "transactionManager")
-    public PlatformTransactionManager annotationDrivenTransactionManager() {
-        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
-        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory());
-        return jpaTransactionManager;
-    }
+//    @Bean(name = "transactionManager")
+//    public PlatformTransactionManager annotationDrivenTransactionManager() {
+//        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+//        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory());
+//        return jpaTransactionManager;
+//    }
 
     @Bean(name = "liquibase")
     public Liquibase liquibase() {
@@ -216,8 +216,8 @@ public class DatabaseConfiguration {
     }
 
     @Bean
-    public TransactionTemplate transactionTemplate() {
-        return new TransactionTemplate(annotationDrivenTransactionManager());
+    public TransactionTemplate transactionTemplate(PlatformTransactionManager platformTransactionManager) {
+        return new TransactionTemplate(platformTransactionManager);
     }
 
 }

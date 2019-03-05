@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.DispatcherServlet;
  * Created by Albert on 2019/3/5.
  */
 @Import(ApplicationConfiguration.class)
+@EntityScan(basePackages={"org.activiti.app.domain"})
 @SpringBootApplication
 public class ActivitiApplication extends SpringBootServletInitializer {
 
@@ -27,6 +29,26 @@ public class ActivitiApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(ActivitiApplication.class);
+    }
+
+
+    @Bean
+    public ServletRegistrationBean app() {
+        final ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
+
+
+        DispatcherServlet app = new DispatcherServlet();
+        app.setContextClass(AnnotationConfigWebApplicationContext.class);
+        app.setContextConfigLocation(AppDispatcherServletConfiguration.class.getName());
+
+        servletRegistrationBean.setServlet(app);
+        servletRegistrationBean.setLoadOnStartup(1);
+        servletRegistrationBean.setAsyncSupported(true);
+        servletRegistrationBean.addUrlMappings("/app/**");
+        servletRegistrationBean.setName("app");
+        servletRegistrationBean.setOrder(2);
+
+        return servletRegistrationBean;
     }
 
     @Bean
@@ -43,26 +65,12 @@ public class ActivitiApplication extends SpringBootServletInitializer {
         servletRegistrationBean.setAsyncSupported(true);
         servletRegistrationBean.addUrlMappings("/api/**");
         servletRegistrationBean.setName("api");
+        servletRegistrationBean.setOrder(1);
 
         return servletRegistrationBean;
     }
 
 
-    @Bean
-    public ServletRegistrationBean app() {
-        final ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
-
-        DispatcherServlet app = new DispatcherServlet();
-        app.setContextClass(AnnotationConfigWebApplicationContext.class);
-        app.setContextConfigLocation(AppDispatcherServletConfiguration.class.getName());
-
-        servletRegistrationBean.setServlet(app);
-        servletRegistrationBean.setLoadOnStartup(1);
-        servletRegistrationBean.setAsyncSupported(true);
-        servletRegistrationBean.addUrlMappings("/app/**");
-        servletRegistrationBean.setName("app");
-        return servletRegistrationBean;
-    }
 
 
 }

@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>activiti-app-conf</artifactId>
     <parent>
-        <groupId>org.activiti</groupId>
+        <groupId>org.activiti.ui</groupId>
         <artifactId>activiti-ui</artifactId>
         <version>6.0.1</version>
     </parent>
@@ -13,23 +13,23 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.activiti</groupId>
+            <groupId>org.activiti.ui</groupId>
             <artifactId>editor-image-generator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.activiti</groupId>
+            <groupId>org.activiti.ui</groupId>
             <artifactId>activiti-app-logic</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.activiti</groupId>
+            <groupId>org.activiti.ui</groupId>
             <artifactId>activiti-app-rest</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.activiti</groupId>
+            <groupId>org.activiti.ui</groupId>
             <artifactId>content-storage-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.activiti</groupId>
+            <groupId>org.activiti.ui</groupId>
             <artifactId>content-storage-fs</artifactId>
         </dependency>
 
