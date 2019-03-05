@@ -4,8 +4,8 @@
 
     <!--https://guide.wuxingdev.cn/java/app-log.html-->
     <property name="LOG_FILE" value="logs/application.log"/>
-    <!--<property name="FILE_LOG_PATTERN"-->
-              <!--value="^V^ [%p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] [%c:%L] [%X{traceId}:%X{spanId}:%X{parentId}] [%X{req.xRequestId}] %m%n"/>-->
+    <property name="FILE_LOG_PATTERN"
+              value="^V^ [%p] [%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] [%c:%L] [%X{traceId}:%X{spanId}:%X{parentId}] [%X{req.xRequestId}] %m%n"/>
     <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
         <!--<encoder>-->
             <!--<pattern>${FILE_LOG_PATTERN}</pattern>-->

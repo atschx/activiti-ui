@@ -1,4 +1,4 @@
-package org.activiti.app;
+package org.activiti.app.ui;
 
 import org.activiti.app.conf.ApplicationConfiguration;
 import org.activiti.app.servlet.ApiDispatcherServletConfiguration;
