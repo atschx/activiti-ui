@@ -10,7 +10,9 @@
         </encoder>
     </appender>
 
-    <logger name="org.springframework.security" level="debug" additivity="true"/>
+    <!--<logger name="org.springframework.web.servlet" level="debug" additivity="true"/>-->
+    <!--<logger name="org.springframework.beans" level="debug" additivity="true"/>-->
+    <!--<logger name="org.springframework.security" level="debug" additivity="true"/>-->
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>

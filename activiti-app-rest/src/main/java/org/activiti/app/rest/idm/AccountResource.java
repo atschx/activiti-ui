@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -36,12 +37,15 @@ import java.util.List;
  */
 @RestController
 public class AccountResource {
-
     @Autowired
     private ObjectMapper objectMapper;
-
     @Autowired
     private IdentityService identityService;
+
+    @PostConstruct
+    public void init() {
+        System.out.println("kjjj");
+    }
 
     /**
      * GET  /rest/authenticate -> check if the user is authenticated, and return its full name.
